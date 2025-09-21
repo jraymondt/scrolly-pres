@@ -1,0 +1,757 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add after your existing CSS styles */
+
+/* Fluid Typography Base */
+:root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 1200;
+    --fluid-min-size: 16;
+    --fluid-max-size: 20;
+    --fluid-min-scale: 1.2;
+    --fluid-max-scale: 1.33;
+    
+    /* Base font size - scales between 16px and 20px */
+    font-size: clamp(
+        var(--fluid-min-size) * 1px,
+        calc(var(--fluid-min-size) * 1px + (var(--fluid-max-size) - var(--fluid-min-size)) * 
+        (100vw - (var(--fluid-min-width) * 1px)) / 
+        (var(--fluid-max-width) - var(--fluid-min-width))),
+        var(--fluid-max-size) * 1px
+    );
+}
+
+/* Heading scale calculation using CSS custom properties */
+h1, .h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 40px;
+    color: rgb(244, 234, 90);
+}
+
+h2, .h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 35px;
+    color: #3ff109;
+}
+
+h3, .h3 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 25px;
+    color: #45c61e;
+}
+
+h4, .h4 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 18px;
+}
+
+h5, .h5 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+p, li, .body-text {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* Add container query support for all grid components */
+.features-grid,
+.tech-stack,
+.comparison-table,
+.challenges-grid {
+    container-type: inline-size;
+}
+
+/* Scale text in cards based on their container size */
+.feature-item h4,
+.tech-item h4,
+.library-card h4,
+.challenge-item h3 {
+    font-size: clamp(1.2rem, 4cqi, 1.8rem);
+}
+
+.feature-item p,
+.tech-item li,
+.library-card li,
+.challenge-item p {
+    font-size: clamp(0.9rem, 2.5cqi, 1.1rem);
+}
+
+body {
+    font-family: "Public Sans", sans-serif;
+    font-size: 5vmin;
+    background-color: black;
+    color: rgb(66, 166, 66);
+    font-weight: 900;
+    line-height: 1.2;
+    overflow-x: hidden;
+    text-decoration: none;
+}
+
+#intro-section h1 {
+  opacity: 0;
+  transition: opacity 4s ease;
+  font-size: 12vmin;
+  text-align: center;
+  margin: 0 20vmin;
+}
+
+body.loaded #intro-section h1 {
+  opacity: 1;
+}
+
+.parallax-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.parallax-item h2 {
+  font-size: 18vmin;
+  text-transform: uppercase;
+  background-color: rgb(163, 44, 147);
+  padding: 6vmin;
+  border-radius: 10vmin;
+}
+
+.parallax-item:first-child {
+  background: url("../img/shaihalud.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.parallax-item:nth-child(2) {
+  background: #3f0d2e;
+}
+
+.parallax-item:nth-child(3) {
+  background: url("../img/dumbhotel.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax Effect for DIV 3 */
+  min-height: 600px;
+}
+
+.parallax-item:nth-child(4) {
+  background: #182e47;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(50px); /* slide up from bottom */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section {
+    min-height: 100vh; /* Each section fills the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+#content-section-09 {
+    margin-bottom: 1400px;
+}
+
+img {
+   width: auto;
+   max-height: 480px; /* Or any fixed height */
+   object-fit: cover; /* or contain, fill, etc. */
+}
+
+.vignette-image {
+  position: relative; /* Needed for positioning the pseudo-element */
+  display: inline-block; 
+}
+
+.vignette-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8); /* Adjust values as needed */
+  pointer-events: none; /* Allows interaction with content beneath */
+}
+
+/* Steam Card Effect */
+
+.steam-card-container{
+    perspective: 1200px; /* Adjust for more or less depth */
+    display: inline-block;
+    margin: 120px;
+}
+
+.steam-glow {
+    box-shadow: 0 0 16px 4px aqua;
+    
+}
+
+a .steam-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.steam-card {
+    margin-top: 200px;
+    width: 250px;
+    height: 350px;
+    border: 2px solid #333; /* Dark border */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures content stays within rounded corners */
+    background-color: #1a1a1a; /* Dark background */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.steam-card-artwork {
+    width: 100%;
+    height: 95%; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #444;
+    background-image: url('../img/neoneventscalender-pdf2024.png');
+}
+
+.steam-card-foil-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: gold;
+    color: black;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.steam-card-interactive {
+    transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    cursor: pointer;
+}
+
+.steam-card-interactive:hover {
+    transform: perspective(1200px) rotateX(18deg) rotateY(14deg) scale(1.12);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+    outline: 2px solid aqua;
+    z-index: 2;
+}
+
+/* Hidden link or image */
+.hidden-link {
+  opacity: 0.1;
+  transition: opacity 0.6s, filter 0.6s;
+  filter: blur(4px) grayscale(1);
+  cursor: pointer;
+  margin-bottom: 20vmin;
+}
+
+.hidden-link:hover {
+  opacity: 1;
+  filter: none;
+}
+
+/* glowing border on hover */
+.hidden-link:hover {
+  box-shadow: 0 0 16px 4px aqua;
+  outline: 2px solid aqua;
+}
+/**********************************************************************/
+/* end of old version and start of presentation specific */
+/**********************************************************************/  
+
+/* Make elements visible only when they have the active class */
+#parallax:not(.active),
+.parallox:not(.active),
+.parallox2:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+#parallax.active,
+.parallox.active,
+.parallox2.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #172c53 0%, #091d3f 50%, #000428 100%);
+        background-image: 
+        radial-gradient(circle at 50% 50%, rgba(25, 44, 83, 0.4) 0%, rgba(9, 29, 63, 0.2) 30%, rgba(0, 4, 40, 0) 70%),
+        linear-gradient(135deg, #172c53 0%, #091d3f 50%, #000428 100%);
+    perspective: 1000px;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ef95f2, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #f0f38d, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(43, 255, 57, 0.9), transparent);
+    background-repeat: repeat;
+}
+
+.stars1 {
+    background-size: 250px 250px;
+    animation: sparkle 20s linear infinite;
+    transform: translateZ(-50px);
+    opacity: 0.8;
+}
+
+.stars2 {
+    background-size: 300px 300px;
+    animation: sparkle 25s linear infinite reverse;
+    transform: translateZ(-100px);
+    opacity: 0.6;
+}
+
+.stars3 {
+    background-size: 350px 350px;
+    animation: sparkle 30s linear infinite;
+    transform: translateZ(-150px);
+    opacity: 0.4;
+}
+
+.twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 25px 25px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 75px 75px, rgba(255,255,255,0.6), transparent);
+    background-size: 200px 200px;
+    animation: twinkle 15s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+    from { transform: translateX(0); }
+    to { transform: translateX(-250px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+
+.scroll-container {
+    position: relative;
+    z-index: 1;
+}
+
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Sections */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-section {
+    min-height: 80vh; 
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(5px); 
+    background: rgba(0, 0, 0, 0.2); 
+    margin: 4rem; 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+
+.step {
+    transition: transform 0.5s ease-out;
+}
+
+.step[data-step="0"] { transform: translateZ(0); }
+.step[data-step="1"] { transform: translateZ(-5px); }
+.step[data-step="2"] { transform: translateZ(-10px); }
+.step[data-step="3"] { transform: translateZ(-15px); }
+.step[data-step="4"] { transform: translateZ(-20px); }
+.step[data-step="5"] { transform: translateZ(-25px); }
+.step[data-step="6"] { transform: translateZ(-30px); }
+
+
+h1, h2, h3 {
+    text-shadow: 0 0 10px rgba(100, 179, 244, 0.5);
+}
+
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* Scroll Indicator */
+.scroll-indicator {
+    margin-top: 3rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.arrow-down {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2bf04f;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    margin: 10px auto;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: rotate(-45deg) translateY(0); }
+    50% { transform: rotate(-45deg) translateY(10px); }
+}
+
+/* Content Cards */
+.definition-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    background: rgba(100, 179, 244, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(100, 179, 244, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(100, 179, 244, 0.2);
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-item ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.tech-item li {
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tech-item li::before {
+    content: "✓ ";
+    color: #64f486;
+    font-weight: bold;
+}
+
+/* Library Comparison */
+.comparison-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.library-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.library-card:hover {
+    transform: translateY(-5px);
+}
+
+.library-card.recommended {
+    border: 2px solid #64b3f4;
+    background: rgba(100, 179, 244, 0.1);
+}
+
+.recommended-tag {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #1c4f79;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+}
+
+.benefit-item {
+    background: linear-gradient(135deg, rgba(100, 179, 244, 0.1), rgba(135, 206, 235, 0.1));
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(100, 179, 244, 0.3);
+    text-align: center;
+}
+
+/* Challenges Grid */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.challenge-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.challenge-item strong {
+    color: #64b3f4;
+}
+
+/* Conclusion */
+.conclusion-content {
+    text-align: center;
+}
+
+.highlight {
+    font-size: 1.5rem;
+    color: #64f47e;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.key-takeaways {
+    background: rgba(100, 179, 244, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.key-takeaways a {
+    text-decoration: none;
+    color: #81f464;
+}
+
+.key-takeaways a:hover {
+    text-decoration: underline;
+    color: #ef95f2;
+}
+
+.key-takeaways ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.key-takeaways li {
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.key-takeaways li::before {
+    content: "👾 ";
+    margin-right: 0.5rem;
+}
+
+.cta {
+    background: linear-gradient(135deg, rgba(100, 179, 244, 0.2), rgba(135, 206, 235, 0.2));
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #64b3f4;
+}
+
+.cta a {
+    text-decoration: none;
+    color: #64b3f4;
+    font-weight: bold;
+    padding: 20px 30px;
+    border: 2px solid #64b3f4;
+    border-radius: 30px;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-top: 66px;
+    display: inline-block;
+  }
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #64f469, #8ceb87);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+.footer a {
+    color: #64b3f4;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+    color: #ef95f2;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+} 
+
+.footer-separator {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.3);
+} 
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .features-grid,
+    .tech-stack,
+    .comparison-table,
+    .hotel-benefits,
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .stars1,
+    .stars2,
+    .stars3,
+    .twinkling,
+    .arrow-down {
+        animation: none;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
+}
