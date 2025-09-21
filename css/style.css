@@ -1,0 +1,232 @@
+/* Enhanced CSS for simple parallax with depth of field */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Public Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Starry background - fixed background layer */
+        .starry-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -10;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        /* Star layers with different parallax speeds */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-repeat: repeat;
+            will-change: transform;
+            transition: filter 0.3s ease;
+        }
+
+        .stars1 {
+            background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                              radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                              radial-gradient(1px 1px at 90px 40px, #fff, transparent);
+            background-size: 200px 100px;
+            animation: sparkle 50s linear infinite;
+        }
+
+        .stars2 {
+            background-image: radial-gradient(1px 1px at 30px 50px, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(1px 1px at 80px 20px, rgba(255,255,255,0.4), transparent);
+            background-size: 150px 80px;
+            animation: sparkle 100s linear infinite reverse;
+        }
+
+        .stars3 {
+            background-image: radial-gradient(1px 1px at 60px 80px, rgba(255,255,255,0.3), transparent),
+                              radial-gradient(2px 2px at 10px 10px, rgba(255,255,255,0.5), transparent);
+            background-size: 300px 200px;
+            animation: sparkle 150s linear infinite;
+        }
+
+        .twinkling {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: twinkle 10s ease-in-out infinite alternate;
+        }
+
+        .nebula {
+            background: radial-gradient(ellipse at center, rgba(147, 39, 143, 0.3) 0%, transparent 70%),
+                        radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: nebula-drift 80s ease-in-out infinite alternate;
+        }
+
+        /* Keyframe animations */
+        @keyframes sparkle {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes nebula-drift {
+            0% { transform: translateX(-20px) translateY(-10px); }
+            100% { transform: translateX(20px) translateY(10px); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            will-change: transform, opacity;
+            transition: transform 0.1s ease-out;
+        }
+
+        .header-content h1 {
+            font-family: 'Lexend Mega', sans-serif;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .header-content h2 {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .header-content p {
+            font-size: 1rem;
+            color: #aaa;
+            max-width: 600px;
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 3;
+            margin: 2rem auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+        }
+
+        section:nth-child(even) {
+            background: rgba(240, 248, 255, 0.95);
+        }
+
+        section > div {
+            margin: 2rem 0;
+            text-align: center;
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+        }
+
+        section h2 {
+            font-family: 'Lexend Mega', sans-serif;
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            color: #16213e;
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        /* Images with depth effect */
+        section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        section img:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .vignette-image {
+            position: relative;
+            display: inline-block;
+        }
+
+        .vignette-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.3) 100%);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 2rem; }
+            .header-content h2 { font-size: 1.2rem; }
+            section h2 { font-size: 2rem; }
+            section h3 { font-size: 1.5rem; }
+            section { padding: 2rem 1rem; margin: 1rem; }
+        }
+
+        /* Performance optimization for reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Add body padding for scroll space */
+        body {
+            padding-bottom: 50vh;
+        }

@@ -1,3 +1,5 @@
+# Let me analyze the HTML structure to understand what needs to be fixed
+html_content = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,6 @@
         <div class="twinkling"></div>
         <div class="nebula"></div> 
     </div>
-
     <header>
         <div class="header-content">
             <h1>Scrollytelling</h1>
@@ -26,7 +27,6 @@
             <p>Interactive web experiences that tell stories through scroll</p>
         </div>
     </header>
-
     <section>
         <div>
             <h2>Scrolly Telling</h2>
@@ -60,6 +60,7 @@
         </div>
     </section>
 
+  
     <section> 
         <div>
             <h2>with</h2>
@@ -75,7 +76,21 @@
             <h3>the end . . .</h3>
         </div>
     </section>
-
-    <script src="js/scroll.js"></script>
 </body>
 </html>
+'''
+
+print("HTML Structure Analysis:")
+print("======================")
+print("The HTML contains:")
+print("1. Starry background with multiple layers (stars1, stars2, stars3, twinkling, nebula)")
+print("2. Header with title and subtitle")
+print("3. Three main sections with text and images")
+print("4. Existing classes that suggest parallax layers")
+print("\nKey elements for parallax:")
+print("- .starry-background container")
+print("- .stars (stars1, stars2, stars3)")  
+print("- .twinkling")
+print("- .nebula")
+print("- Section content divs")
+print("- Images (IT Crowd GIF, space-goat.jpg)")
