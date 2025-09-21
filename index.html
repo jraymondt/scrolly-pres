@@ -7,86 +7,119 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Public+Sans&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Public+Sans:wght@400;700&display=swap"
     rel="stylesheet">
 </head>
 <body>
-    <section id="intro-section">
-        <h1>Welcome</h1>
-    </section>
+    <div class="starry-background">
+        <div class="stars stars1" data-speed="0.1"></div>
+        <div class="stars stars2" data-speed="0.2"></div>
+        <div class="stars stars3" data-speed="0.3"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+    </div>
 
-    <section id="content-section-01" class="hidden">
-        <h2>to</h2>
-    </section>
+    <header class="scroll-section">
+        <div class="content-box">
+            <h1 class="scroll-reveal">Scrollytelling</h1>
+            <h2 class="scroll-reveal">A Student Developer's Guide</h2>
+            <p class="scroll-reveal">Interactive web experiences that tell stories through scroll</p>
+        </div>
+    </header>
 
-    <section id="content-section-02" class="hidden">
-        <h3>The Machine</h3>
-    </section>
-
-    <section>
-        <div id="parallax" class="parallax-item">
-            <h2>This</h2>
-            <img src="img/the-it-crowd-the-it-crowd-denholm.gif" alt="the-it-crowd-the-it-crowd-denholm">
-        </div>
-        <div class="parallax-item">
-            <h3>is</h3>
-        </div>
-        <div class="parallax-item">
-            <h2>a</h2>
-        </div>
-        <div class="parallax-item">
-            <h2>piece</h2>
+    <section class="scroll-section">
+        <div class="content-box">
+            <h2 class="scroll-reveal" data-speed="0.4">Scrolly Telling</h2>
+            <p class="scroll-reveal">Scroll to see the effect</p>
+            <img src="img/the-it-crowd-the-it-crowd-denholm.gif" alt="IT Crowd" class="scroll-reveal" data-speed="0.2">
+            <h3 class="scroll-reveal" data-speed="-0.1">Different speeds create depth</h3>
         </div>
     </section>
 
-    <section id="content-section-05" class="hidden">
-            <h3>of</h3>
-    </section>        
+    <section class="scroll-section">
+        <div class="content-box">
+            <h2 class="scroll-reveal">of</h2>
+            <p class="scroll-reveal">Scrolly, Wolley. . .</p>
+            <h3 class="scroll-reveal">Technoley</h3>
+            <h2 class="scroll-reveal">slapped together</h2>
+            <p class="scroll-reveal">in a few hours after our webapps class</p>
+            <h3 class="scroll-reveal">Then broken and hastily</h3>
+            <p class="scroll-reveal">repaired over the next few days</p>
+        </div>
+    </section>
+
+    <section class="scroll-section">
+        <div class="content-box">
+            <h2 class="scroll-reveal">with</h2>
+            <p class="scroll-reveal">some</p>
+            <h3 class="scroll-reveal">cable ties and sticky-tape</h3>
+            <div class="vignette-image scroll-reveal">
+                <img src="img/space-goat.jpg" alt="alt timeline">
+            </div>
+            <h3 class="scroll-reveal">the end . . .</h3>
+        </div>
+    </section>
+
+    <!----------------- This marks the start of the class presentation waffle ------------------ -->
+    <div id="presentation-start">
+        <!-- What is Scrollytelling -->
+        <section class="scroll-section">
+            <div class="content-box">
+                <h3 class="scroll-reveal">What is Scrollytelling?</h3>
+                <div class="definition-card scroll-reveal">
+                    <p>A portmanteau of <strong>"scrolling"</strong> and <strong>"storytelling"</strong></p>
+                    <p>An interactive web design technique that transforms scrolling into a narrative or information display.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item scroll-reveal">
+                        <h4>Progressive Revelation</h4>
+                        <p>Content revealed as users scroll</p>
+                    </div>
+                    <div class="feature-item scroll-reveal">
+                        <h4>Synchronized Animation</h4>
+                        <p>Animations triggered by scroll position</p>
+                    </div>
+                    <div class="feature-item scroll-reveal">
+                        <h4>Immersive Experience</h4>
+                        <p>Multiple media types working together</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="scroll-section">
+            <div class="content-box">
+                <h3 class="scroll-reveal">Technical Implementation</h3>
+                <div class="tech-stack">
+                    <div class="tech-item scroll-reveal">
+                        <h4>CSS3</h4>
+                        <ul>
+                            <li>`position: sticky` for pinning elements.</li>
+                            <li>`transform` for performant animations.</li>
+                            <li>`opacity` for fade effects.</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item scroll-reveal">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li>`IntersectionObserver` to detect when elements are visible.</li>
+                            <li>`window.requestAnimationFrame` for smooth scroll-based animations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-    <section id="content-section-06" class="hidden">
-                <h4>Scrolly</h4>
-    </section>        
-    <section>
-        <div id="parallox" class="parallox-item">
-            <h2>Woley</h2>
-        </div>
-        <div class="parallox-item">
-            <h3>Technoley</h3>
-        </div>
-        <div class="parallox-item">
-            <h4>slapped together</h4>
-        </div>
-        <div class="parallox-item">
-            <h5>after webapps</h5>
-        </div>
-    </section>
+        <!-- ... other presentation sections ... -->
 
-    <section id="content-section-07" class="hidden">
-        <h5>to give my</h5>
-    </section>
-        
-    <section id="content-section-08" class="hidden">
-        <h5>brain a rest</h5>
-
-    </section>
-  
-    <section id="content-section-09" class="hidden">
-
-        <span class="vignette-image">
-            <img src="img/space-goat.jpg" alt="alt timeline">
-        </span>
-            
-        <h2>the end . . .</h2>
-                <!----------- I liked the steam card effect so I tried it out here 
-        for snits and giggles ------------->
-        <div class="steam-card steam-card-interactive">
-            <div class="steam-card-artwork"></div>
-            <div class="steam-card-foil-indicator">👾</div>
-        </div>
-        <a href="https://spiritualperfection.com.au/" class="hidden-link">
-            <img src="img/royksopp_night.jpg" alt="Secret Astro Link">
-        </a>
-    </section>
+    </div>
+    <footer>
+            <div class="footer-separator"></div>
+            <div class="footer-content">
+                <p>Created by James - Web Development Student @ North Metro TAFE</p>
+            </div>
+    </footer>
+    <script src="js/scroll.js"></script>
 </body>
-<script src="js/scroll.js"></script>
 </html>

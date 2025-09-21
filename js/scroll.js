@@ -1,59 +1,57 @@
-// H1 fade in on load
-window.addEventListener('DOMContentLoaded', function() {
-  document.body.classList.add('loaded');
-});
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Part 1: Fade-in elements on scroll using IntersectionObserver ---
+  const revealElements = document.querySelectorAll('.scroll-reveal');
 
-const sections = document.querySelectorAll('.hidden');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      // If the element is in the viewport, add the 'visible' class
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        // Optional: remove class if you want the effect to repeat
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    root: null, // observes intersections relative to the viewport
+    threshold: 0.1 // trigger when 10% of the element is visible
+  });
 
-const observerOptions = {
-  root: null, // relative to the viewport
-  rootMargin: '0px',
-  threshold: 0.4 // trigger when 50% of the element is visible
-};
+  // Observe each element
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+  });
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      // If you want the animation to only happen once, uncomment the line below:
-      //observer.unobserve(entry.target);
-    } else {
-      // If you want the animation to reverse when scrolling back up:
-      entry.target.classList.remove('show');
+
+  // --- Part 2: Simple Parallax Effect on Scroll ---
+  const parallaxElements = document.querySelectorAll('[data-speed]');
+  let ticking = false;
+
+  function applyParallax() {
+    const scrollTop = window.pageYOffset;
+
+    parallaxElements.forEach(el => {
+      // Get the speed from the data-speed attribute
+      const speed = parseFloat(el.dataset.speed);
+      
+      // Calculate the vertical movement
+      // A negative value moves the element up as you scroll down
+      const yPos = -(scrollTop * speed);
+
+      // Apply the transform using CSS
+      el.style.transform = `translateY(${yPos}px)`;
+    });
+    ticking = false;
+  }
+
+  // Use requestAnimationFrame for smooth performance
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(applyParallax);
+      ticking = true;
     }
   });
-}, observerOptions);
 
-sections.forEach(section => {
-  observer.observe(section);
+  // Apply initial parallax position on load
+  applyParallax();
 });
-
-//window.addEventListener('scroll', () => {
-  // If at the bottom, jump to the top
-  //if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    //setTimeout(() => {
-  //window.scrollTo({ top: 0, behavior: 'auto' });
-//}, 1889); //  adjust as needed
-//  }
-//});
-
-// newlax 
-
-const parallax = document.getElementById("parallax");
-
-// Parallax Effect for DIV 1
-window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
-  parallax.style.backgroundPositionY = offset * 0.7 + "px";
-  // DIV 1 background will move slower than other elements on scroll.
-});
-
-// Parallax Effect for DIV 2
-const parallaxItem = document.querySelector(".parallox");
-window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
-  parallaxItem.style.transform = "translateY(" + offset * 0.5 + "px)";
-  // DIV 2 will move at a moderate speed on scroll.
-});
-
-
