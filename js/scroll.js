@@ -55,5 +55,10 @@ window.addEventListener("scroll", function () {
   parallaxItem.style.transform = "translateY(" + offset * 0.5 + "px)";
   // DIV 2 will move at a moderate speed on scroll.
 });
-
-
+// Parallax Effect for DIV 3
+const parallaxItem2 = document.querySelector(".parallox2");
+window.addEventListener("scroll", function () {
+  let offset = window.pageYOffset;
+  parallaxItem2.style.transform = "translateY(" + offset * 0.3 + "px)";
+  // DIV 3 will move faster than DIV 1 and DIV 2 on scroll.
+});

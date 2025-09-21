@@ -192,6 +192,25 @@ img {
   pointer-events: none; /* Allows interaction with content beneath */
 }
 
+/* Steam Card Effect */
+
+.steam-card-container{
+    perspective: 1200px; /* Adjust for more or less depth */
+    display: inline-block;
+    margin: 120px;
+}
+
+.steam-glow {
+    box-shadow: 0 0 16px 4px aqua;
+    
+}
+
+a .steam-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .steam-card {
     margin-top: 200px;
     width: 250px;
@@ -227,11 +246,13 @@ img {
 
 .steam-card-interactive {
     transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    cursor: pointer;
 }
 
 .steam-card-interactive:hover {
     transform: perspective(1200px) rotateX(18deg) rotateY(14deg) scale(1.12);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+    outline: 2px solid aqua;
     z-index: 2;
 }
 
@@ -253,4 +274,406 @@ img {
 .hidden-link:hover {
   box-shadow: 0 0 16px 4px aqua;
   outline: 2px solid aqua;
+}
+
+/* end of old version and start of presentation specific */
+
+/* Starry Background */
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #000428 100%);
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.9), transparent);
+    background-repeat: repeat;
+}
+
+.stars1 {
+    background-size: 250px 250px;
+    animation: sparkle 20s linear infinite;
+}
+
+.stars2 {
+    background-size: 300px 300px;
+    animation: sparkle 25s linear infinite reverse;
+}
+
+.stars3 {
+    background-size: 350px 350px;
+    animation: sparkle 30s linear infinite;
+}
+
+.twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 25px 25px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 75px 75px, rgba(255,255,255,0.6), transparent);
+    background-size: 200px 200px;
+    animation: twinkle 15s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+    from { transform: translateX(0); }
+    to { transform: translateX(-250px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Main Container */
+.scroll-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Sections */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-section {
+    min-height: 100vh;
+    padding: 4rem 0;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography */
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #64b3f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #64b3f4;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #87ceeb;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* Scroll Indicator */
+.scroll-indicator {
+    margin-top: 3rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.arrow-down {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #64b3f4;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    margin: 10px auto;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: rotate(-45deg) translateY(0); }
+    50% { transform: rotate(-45deg) translateY(10px); }
+}
+
+/* Content Cards */
+.definition-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    background: rgba(100, 179, 244, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(100, 179, 244, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(100, 179, 244, 0.2);
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-item ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.tech-item li {
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tech-item li::before {
+    content: "✓ ";
+    color: #64b3f4;
+    font-weight: bold;
+}
+
+/* Library Comparison */
+.comparison-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.library-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.library-card:hover {
+    transform: translateY(-5px);
+}
+
+.library-card.recommended {
+    border: 2px solid #64b3f4;
+    background: rgba(100, 179, 244, 0.1);
+}
+
+.recommended-tag {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #64b3f4;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Hotel Benefits */
+.hotel-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-item {
+    background: linear-gradient(135deg, rgba(100, 179, 244, 0.1), rgba(135, 206, 235, 0.1));
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(100, 179, 244, 0.3);
+    text-align: center;
+}
+
+/* Challenges Grid */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.challenge-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.challenge-item strong {
+    color: #64b3f4;
+}
+
+/* Conclusion */
+.conclusion-content {
+    text-align: center;
+}
+
+.highlight {
+    font-size: 1.5rem;
+    color: #64b3f4;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.key-takeaways {
+    background: rgba(100, 179, 244, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.key-takeaways ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.key-takeaways li {
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.key-takeaways li::before {
+    content: "🚀 ";
+    margin-right: 0.5rem;
+}
+
+.cta {
+    background: linear-gradient(135deg, rgba(100, 179, 244, 0.2), rgba(135, 206, 235, 0.2));
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #64b3f4;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #64b3f4, #87ceeb);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .features-grid,
+    .tech-stack,
+    .comparison-table,
+    .hotel-benefits,
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .stars1,
+    .stars2,
+    .stars3,
+    .twinkling,
+    .arrow-down {
+        animation: none;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
 }
