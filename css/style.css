@@ -7,37 +7,101 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Add after your existing CSS styles */
+
+/* Fluid Typography Base */
+:root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 1200;
+    --fluid-min-size: 16;
+    --fluid-max-size: 20;
+    --fluid-min-scale: 1.2;
+    --fluid-max-scale: 1.33;
+    
+    /* Base font size - scales between 16px and 20px */
+    font-size: clamp(
+        var(--fluid-min-size) * 1px,
+        calc(var(--fluid-min-size) * 1px + (var(--fluid-max-size) - var(--fluid-min-size)) * 
+        (100vw - (var(--fluid-min-width) * 1px)) / 
+        (var(--fluid-max-width) - var(--fluid-min-width))),
+        var(--fluid-max-size) * 1px
+    );
+}
+
+/* Heading scale calculation using CSS custom properties */
+h1, .h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 40px;
+    color: rgb(244, 234, 90);
+}
+
+h2, .h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 35px;
+    color: #3ff109;
+}
+
+h3, .h3 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 25px;
+    color: #45c61e;
+}
+
+h4, .h4 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 18px;
+}
+
+h5, .h5 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+p, li, .body-text {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* Add container query support for all grid components */
+.features-grid,
+.tech-stack,
+.comparison-table,
+.challenges-grid {
+    container-type: inline-size;
+}
+
+/* Scale text in cards based on their container size */
+.feature-item h4,
+.tech-item h4,
+.library-card h4,
+.challenge-item h3 {
+    font-size: clamp(1.2rem, 4cqi, 1.8rem);
+}
+
+.feature-item p,
+.tech-item li,
+.library-card li,
+.challenge-item p {
+    font-size: clamp(0.9rem, 2.5cqi, 1.1rem);
+}
+
 body {
     font-family: "Public Sans", sans-serif;
     font-size: 5vmin;
     background-color: black;
-    color: aqua;
+    color: rgb(66, 166, 66);
     font-weight: 900;
-}
-
-h1 {
-    font-size: 20vmin; 
-}
-
-h2 {
-    font-size: 18vmin;
-}
-
-h3 {
-    font-size: 16vmin;
-}
-
-h4 {
-    font-size: 14vmin;
-}
-
-h5 {
-    font-size: 12vmin;
+    line-height: 1.2;
+    overflow-x: hidden;
+    text-decoration: none;
 }
 
 #intro-section h1 {
   opacity: 0;
   transition: opacity 4s ease;
+  font-size: 12vmin;
+  text-align: center;
+  margin: 0 20vmin;
 }
 
 body.loaded #intro-section h1 {
@@ -100,7 +164,7 @@ body.loaded #intro-section h1 {
   border-radius: 10vmin;
 }
 
-.parallox-item h5 {
+.parallox-item h3 {
   font-size: 12vmin;
   text-transform: uppercase;
   background-color: rgb(22, 21, 26);
@@ -275,10 +339,11 @@ a .steam-card {
   box-shadow: 0 0 16px 4px aqua;
   outline: 2px solid aqua;
 }
-
+/**********************************************************************/
 /* end of old version and start of presentation specific */
+/**********************************************************************/  
 
-/* Starry Background */
+
 .starry-background {
     position: fixed;
     top: 0;
@@ -286,7 +351,11 @@ a .steam-card {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #000428 100%);
+    background: linear-gradient(135deg, #172c53 0%, #091d3f 50%, #000428 100%);
+        background-image: 
+        radial-gradient(circle at 50% 50%, rgba(25, 44, 83, 0.4) 0%, rgba(9, 29, 63, 0.2) 30%, rgba(0, 4, 40, 0) 70%),
+        linear-gradient(135deg, #172c53 0%, #091d3f 50%, #000428 100%);
+    perspective: 1000px;
 }
 
 .stars {
@@ -296,27 +365,33 @@ a .steam-card {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 20px 30px, #ef95f2, transparent),
         radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #f0f38d, transparent),
         radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.9), transparent);
+        radial-gradient(2px 2px at 160px 30px, rgba(43, 255, 57, 0.9), transparent);
     background-repeat: repeat;
 }
 
 .stars1 {
     background-size: 250px 250px;
     animation: sparkle 20s linear infinite;
+    transform: translateZ(-50px);
+    opacity: 0.8;
 }
 
 .stars2 {
     background-size: 300px 300px;
     animation: sparkle 25s linear infinite reverse;
+    transform: translateZ(-100px);
+    opacity: 0.6;
 }
 
 .stars3 {
     background-size: 350px 350px;
     animation: sparkle 30s linear infinite;
+    transform: translateZ(-150px);
+    opacity: 0.4;
 }
 
 .twinkling {
@@ -342,13 +417,13 @@ a .steam-card {
     50% { opacity: 1; }
 }
 
-/* Main Container */
+
 .scroll-container {
     position: relative;
     z-index: 1;
 }
 
-/* Content Wrapper */
+
 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -365,40 +440,36 @@ a .steam-card {
 }
 
 .content-section {
-    min-height: 100vh;
-    padding: 4rem 0;
+    min-height: 80vh; 
+    padding: 3rem 0;
     display: flex;
     align-items: center;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.3);
-    margin: 2rem 0;
+    backdrop-filter: blur(5px); 
+    background: rgba(0, 0, 0, 0.2); 
+    margin: 4rem; 
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Typography */
-h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #fff, #64b3f4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+.step {
+    transition: transform 0.5s ease-out;
 }
 
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #64b3f4;
-    text-align: center;
+.step[data-step="0"] { transform: translateZ(0); }
+.step[data-step="1"] { transform: translateZ(-5px); }
+.step[data-step="2"] { transform: translateZ(-10px); }
+.step[data-step="3"] { transform: translateZ(-15px); }
+.step[data-step="4"] { transform: translateZ(-20px); }
+.step[data-step="5"] { transform: translateZ(-25px); }
+.step[data-step="6"] { transform: translateZ(-30px); }
+
+
+h1, h2, h3 {
+    text-shadow: 0 0 10px rgba(100, 179, 244, 0.5);
 }
 
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #87ceeb;
-}
 
 /* Animations */
 .fade-in {
@@ -426,7 +497,7 @@ h3 {
 .arrow-down {
     width: 20px;
     height: 20px;
-    border: 2px solid #64b3f4;
+    border: 2px solid #2bf04f;
     border-top: none;
     border-right: none;
     transform: rotate(-45deg);
@@ -497,7 +568,7 @@ h3 {
 
 .tech-item li::before {
     content: "✓ ";
-    color: #64b3f4;
+    color: #64f486;
     font-weight: bold;
 }
 
@@ -531,7 +602,7 @@ h3 {
     position: absolute;
     top: -10px;
     right: 20px;
-    background: #64b3f4;
+    background: #1c4f79;
     color: #000;
     padding: 0.5rem 1rem;
     border-radius: 15px;
@@ -539,12 +610,13 @@ h3 {
     font-weight: bold;
 }
 
-/* Hotel Benefits */
-.hotel-benefits {
+
+.benefits {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+
 }
 
 .benefit-item {
@@ -581,7 +653,7 @@ h3 {
 
 .highlight {
     font-size: 1.5rem;
-    color: #64b3f4;
+    color: #64f47e;
     margin-bottom: 2rem;
     font-weight: 600;
 }
@@ -592,6 +664,16 @@ h3 {
     border-radius: 15px;
     margin: 2rem 0;
     text-align: left;
+}
+
+.key-takeaways a {
+    text-decoration: none;
+    color: #81f464;
+}
+
+.key-takeaways a:hover {
+    text-decoration: underline;
+    color: #ef95f2;
 }
 
 .key-takeaways ul {
@@ -605,7 +687,7 @@ h3 {
 }
 
 .key-takeaways li::before {
-    content: "🚀 ";
+    content: "👾 ";
     margin-right: 0.5rem;
 }
 
@@ -615,6 +697,18 @@ h3 {
     border-radius: 15px;
     border: 2px solid #64b3f4;
 }
+
+.cta a {
+    text-decoration: none;
+    color: #64b3f4;
+    font-weight: bold;
+    padding: 20px 30px;
+    border: 2px solid #64b3f4;
+    border-radius: 30px;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-top: 66px;
+    display: inline-block;
+  }
 
 /* Progress Bar */
 .progress-bar {
@@ -629,10 +723,36 @@ h3 {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #64b3f4, #87ceeb);
+    background: linear-gradient(90deg, #64f469, #8ceb87);
     width: 0%;
     transition: width 0.3s ease;
 }
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+.footer a {
+    color: #64b3f4;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+    color: #ef95f2;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+} 
+
+.footer-separator {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.3);
+} 
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

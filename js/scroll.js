@@ -8,7 +8,7 @@ const sections = document.querySelectorAll('.hidden');
 const observerOptions = {
   root: null, // relative to the viewport
   rootMargin: '0px',
-  threshold: 0.4 // trigger when 50% of the element is visible
+  threshold: 0.4 // trigger when 40% of the element is visible
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -28,37 +28,35 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-//window.addEventListener('scroll', () => {
-  // If at the bottom, jump to the top
-  //if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    //setTimeout(() => {
-  //window.scrollTo({ top: 0, behavior: 'auto' });
-//}, 1889); //  adjust as needed
-//  }
-//});
 
-// newlax 
-
-const parallax = document.getElementById("parallax");
+// Parallax effects - with null checks to prevent errors
 
 // Parallax Effect for DIV 1
-window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
-  parallax.style.backgroundPositionY = offset * 0.7 + "px";
-  // DIV 1 background will move slower than other elements on scroll.
-});
+const parallax = document.getElementById("parallax");
+if (parallax) { // Check if element exists before adding event listener
+  window.addEventListener("scroll", function () {
+    let offset = window.pageYOffset;
+    parallax.style.backgroundPositionY = offset * 0.7 + "px";
+    // DIV 1 background will move slower than other elements on scroll.
+  });
+}
 
 // Parallax Effect for DIV 2
 const parallaxItem = document.querySelector(".parallox");
-window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
-  parallaxItem.style.transform = "translateY(" + offset * 0.5 + "px)";
-  // DIV 2 will move at a moderate speed on scroll.
-});
+if (parallaxItem) { // Check if element exists before adding event listener
+  window.addEventListener("scroll", function () {
+    let offset = window.pageYOffset;
+    parallaxItem.style.transform = "translateY(" + offset * 0.5 + "px)";
+    // DIV 2 will move at a moderate speed on scroll.
+  });
+}
+
 // Parallax Effect for DIV 3
 const parallaxItem2 = document.querySelector(".parallox2");
-window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
-  parallaxItem2.style.transform = "translateY(" + offset * 0.3 + "px)";
-  // DIV 3 will move faster than DIV 1 and DIV 2 on scroll.
-});
+if (parallaxItem2) { // Check if element exists before adding event listener
+  window.addEventListener("scroll", function () {
+    let offset = window.pageYOffset;
+    parallaxItem2.style.transform = "translateY(" + offset * 0.3 + "px)";
+    // DIV 3 will move faster than DIV 1 and DIV 2 on scroll.
+  });
+}
