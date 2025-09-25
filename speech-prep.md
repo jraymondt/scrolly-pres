@@ -98,7 +98,7 @@ The beauty lies in leveraging existing user behavior - everyone knows how to scr
 
 ### JavaScript Library Options
 
-I've chosen to explore **Scrollama.js** although, it is not implemented in my ![scrolly v2.2](https://jraymondt.com/scrolly)  as our primary library because I ran out of time.
+I've chosen to explore **Scrollama.js** although, it is not implemented in my [scrolly v2.2](https://jraymondt.com/scrolly)  as our primary library because I ran out of time.
 
 **Why Scrollama over alternatives:**
 
