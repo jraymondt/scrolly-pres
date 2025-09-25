@@ -4,8 +4,8 @@
 
 Scrollytelling - demostrate:
 
-- ![scrolly v2.2](https://jraymondt.com/scrolly)
-- ![OG jimbob Scrolly v1.0](https://jraymondt.com/scroll-out)
+- [scrolly v2.2](https://jraymondt.com/scrolly)
+- [OG jimbob Scrolly v1.0](https://jraymondt.com/scroll-out)
 
 Scrollytelling, a portmanteau of "scrolling" and "storytelling," is an interactive web design technique that transforms the simple act of scrolling into a narrative device. As users scroll down a webpage, content is revealed, animated, and transformed in sync with their scrolling behavior, creating an immersive, cinematic experience.
 
