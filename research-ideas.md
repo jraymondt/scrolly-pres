@@ -251,21 +251,20 @@ It is ideal for building short-running and event-driven applications because the
 
 Examples: AWS Lambda, API Gateway, and Coca-Cola's FreeStyle vending machines
 
-
 [web tech](https://learning.oreilly.com/library/view/practical-html-and/9781835080917/?ar=&orpq=&email=%5Eu)
 
-[web tech](https://learning.oreilly.com/library/view/using-generative-ai/9781098167196/)
+[using-generative-ai](https://learning.oreilly.com/library/view/using-generative-ai/9781098167196/)
 
 [web tech](https://engagevr.io/)
 
-[web tech](https://www.wazile.com/blog/what-is-virtual-reality-vr-in-web-development/)
+[what-is-virtual-reality-vr-in-web-development](https://www.wazile.com/blog/what-is-virtual-reality-vr-in-web-development/)
 
-[web tech](https://e-dimensionz.com/blog/integrating-virtual-reality-into-web-design)
+[integrating-virtual-reality-into-web-design](https://e-dimensionz.com/blog/integrating-virtual-reality-into-web-design)
 
 [web tech](https://blog.hubspot.com/marketing/ai-seo#:~:text=AI%20SEO%20is%20a%20search,Identify%20opportunities%20to%20optimize%20content)
 
 [web tech](https://researchfdi.com/future-of-seo-ai/#:~:text=AI%20&%20SEO:%20How%20Artificial%20Intelligence,in%205%20or%2010%20years?)
 
-[web tech](https://finch.com/blog/google-ai-overviews-optimization-seo)
+[google-ai-overviews-optimization-seo](https://finch.com/blog/google-ai-overviews-optimization-seo)
 
-[web tech](https://guides.lib.berkeley.edu/evaluating-resources)
+[evaluating-resource](https://guides.lib.berkeley.edu/evaluating-resources)
